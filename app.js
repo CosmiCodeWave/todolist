@@ -9,7 +9,7 @@ app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://127.0.0.1:27017/todolistDB",{ useNewUrlParser: true,useUnifiedTopology: true,
+mongoose.connect("mongodb+srv://karan:Test1234@cluster0.2v6wbpy.mongodb.net/todolistDB",{ useNewUrlParser: true,useUnifiedTopology: true,
   serverSelectionTimeoutMS: 5000});
 const listsSchema =new mongoose.Schema({
     name:String
@@ -88,7 +88,7 @@ app.get("/:customListName", async function(req, res) {
             name: itemName
         });
 
-        if (listName === "Today"){
+        if (listName === "today"){
             await item.save();
             res.redirect("/");
         } else {
